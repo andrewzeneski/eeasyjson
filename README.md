@@ -1,5 +1,10 @@
 # easyjson [![Build Status](https://travis-ci.org/mailru/easyjson.svg?branch=master)](https://travis-ci.org/mailru/easyjson) [![Go Report Card](https://goreportcard.com/badge/github.com/mailru/easyjson)](https://goreportcard.com/report/github.com/mailru/easyjson)
 
+> eeasyjson is based on a [easyjson](https://github.com/mailru/easyjson) copy, mainly because of using golang rewriting Java project, 
+history project in which a large number of broad and the type of uncertainty, 
+and don't want to because the change of pollution sources warehouse, 
+copy a implementation, if have the same demand colleagues can be used together.
+
 Package easyjson provides a fast and easy way to marshal/unmarshal Go structs
 to/from JSON without the use of reflection. In performance tests, easyjson
 outperforms the standard `encoding/json` package by a factor of 4-5x, and other
@@ -327,3 +332,5 @@ marshaling.
 \* marshaling to a writer,
 \*\* using `ffjson.Pool()`,
 \*\*\* reusing output slice instead of resetting it to nil
+
+
