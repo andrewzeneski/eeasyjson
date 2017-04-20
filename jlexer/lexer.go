@@ -607,6 +607,11 @@ func (r *Lexer) unsafeString() (string, []byte) {
 	}
 	bytes := r.token.byteValue
 	ret := bytesToStr(r.token.byteValue)
+
+	if r.LooseType && ret == "" {
+		ret = "0"
+	}
+
 	r.consume()
 	return ret, bytes
 }
@@ -685,6 +690,11 @@ func (r *Lexer) number() string {
 		return ""
 	}
 	ret := bytesToStr(r.token.byteValue)
+
+	if r.LooseType && ret == "" {
+		ret = "0"
+	}
+
 	r.consume()
 	return ret
 }
