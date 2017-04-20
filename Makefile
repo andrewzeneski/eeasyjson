@@ -1,4 +1,4 @@
-PKG=github.com/mailru/easyjson
+PKG=github.com/thinkeridea/eeasyjson
 GOPATH:=$(PWD)/.root:$(GOPATH)
 export GOPATH
 
@@ -14,24 +14,24 @@ clean:
 	rm -rf .root
 
 build:
-	go build -i -o .root/bin/easyjson $(PKG)/easyjson
+	go build -i -o .root/bin/eeasyjson $(PKG)/eeasyjson
 
 generate: root build
-	.root/bin/easyjson -stubs \
+	.root/bin/eeasyjson -stubs \
 		.root/src/$(PKG)/tests/snake.go \
 		.root/src/$(PKG)/tests/data.go \
 		.root/src/$(PKG)/tests/omitempty.go \
 		.root/src/$(PKG)/tests/nothing.go \
 		.root/src/$(PKG)/tests/named_type.go
 
-	.root/bin/easyjson -all .root/src/$(PKG)/tests/data.go 
-	.root/bin/easyjson -all .root/src/$(PKG)/tests/nothing.go
-	.root/bin/easyjson -all .root/src/$(PKG)/tests/errors.go
-	.root/bin/easyjson -snake_case .root/src/$(PKG)/tests/snake.go
-	.root/bin/easyjson -omit_empty .root/src/$(PKG)/tests/omitempty.go
-	.root/bin/easyjson -build_tags=use_easyjson .root/src/$(PKG)/benchmark/data.go
-	.root/bin/easyjson .root/src/$(PKG)/tests/nested_easy.go
-	.root/bin/easyjson .root/src/$(PKG)/tests/named_type.go
+	.root/bin/eeasyjson -all .root/src/$(PKG)/tests/data.go
+	.root/bin/eeasyjson -all .root/src/$(PKG)/tests/nothing.go
+	.root/bin/eeasyjson -all .root/src/$(PKG)/tests/errors.go
+	.root/bin/eeasyjson -snake_case .root/src/$(PKG)/tests/snake.go
+	.root/bin/eeasyjson -omit_empty .root/src/$(PKG)/tests/omitempty.go
+	.root/bin/eeasyjson -build_tags=use_easyjson .root/src/$(PKG)/benchmark/data.go
+	.root/bin/eeasyjson .root/src/$(PKG)/tests/nested_easy.go
+	.root/bin/eeasyjson .root/src/$(PKG)/tests/named_type.go
 
 test: generate root
 	go test \
