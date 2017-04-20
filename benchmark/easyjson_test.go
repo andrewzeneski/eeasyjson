@@ -5,8 +5,8 @@ package benchmark
 import (
 	"testing"
 
-	"github.com/mailru/easyjson"
-	"github.com/mailru/easyjson/jwriter"
+	"github.com/thinkeridea/eeasyjson"
+	"github.com/thinkeridea/eeasyjson/jwriter"
 )
 
 func BenchmarkEJ_Unmarshal_M(b *testing.B) {
