@@ -1,6 +1,6 @@
-# easyjson [![Build Status](https://travis-ci.org/mailru/easyjson.svg?branch=master)](https://travis-ci.org/mailru/easyjson) [![Go Report Card](https://goreportcard.com/badge/github.com/mailru/easyjson)](https://goreportcard.com/report/github.com/mailru/easyjson)
+# easyjson [![Build Status](https://travis-ci.org/thinkeridea/eeasyjson.svg?branch=master)](https://travis-ci.org/thinkeridea/eeasyjson) [![Go Report Card](https://goreportcard.com/badge/github.com/thinkeridea/eeasyjson)](https://goreportcard.com/report/github.com/thinkeridea/eeasyjson)
 
-> eeasyjson is based on a [easyjson](https://github.com/mailru/easyjson) copy, mainly because of using golang rewriting Java project, 
+> eeasyjson is based on a [easyjson](https://github.com/thinkeridea/eeasyjson) copy, mainly because of using golang rewriting Java project, 
 history project in which a large number of broad and the type of uncertainty, 
 and don't want to because the change of pollution sources warehouse, 
 copy a implementation, if have the same demand colleagues can be used together.
@@ -19,10 +19,10 @@ enabling `omitempty` behavior by default.
 ## Usage
 ```sh
 # install
-go get -u github.com/mailru/easyjson/...
+go get -u github.com/thinkeridea/eeasyjson/...
 
 # run
-easyjson -all <file>.go
+eeasyjson -all <file>.go
 ```
 
 The above will generate `<file>_easyjson.go` containing the appropriate marshaler and
@@ -35,7 +35,7 @@ from [ffjson](https://github.com/pquerna/ffjson)).
 
 ## Options
 ```txt
-Usage of easyjson:
+Usage of eeasyjson:
   -all
     	generate marshaler/unmarshalers for all structs in a file
   -build_tags string
@@ -97,7 +97,7 @@ Additionally, easyjson exposes utility funcs that use the `MarshalEasyJSON` and
 `UnmarshalEasyJSON` for marshaling/unmarshaling to and from standard readers
 and writers. For example, easyjson provides `easyjson.MarshalToHTTPResponseWriter`
 which marshals to the standard `http.ResponseWriter`. Please see the [GoDoc
-listing](https://godoc.org/github.com/mailru/easyjson) for the full listing of
+listing](https://godoc.org/github.com/thinkeridea/eeasyjson) for the full listing of
 utility funcs that are available.
 
 ## Controlling easyjson Marshaling and Unmarshaling Behavior
@@ -131,7 +131,7 @@ allocation and to allow larger reusable buffers.
 easyjson's custom allocation buffer pool is defined in the `easyjson/buffer`
 package, and the default behavior pool behavior can be modified (if necessary)
 through a call to `buffer.Init()` prior to any marshaling or unmarshaling.
-Please see the [GoDoc listing](https://godoc.org/github.com/mailru/easyjson/buffer)
+Please see the [GoDoc listing](https://godoc.org/github.com/thinkeridea/eeasyjson/buffer)
 for more information.
 
 ## Issues, Notes, and Limitations
