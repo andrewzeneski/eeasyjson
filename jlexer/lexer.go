@@ -700,6 +700,10 @@ func (r *Lexer) number() string {
 }
 
 func (r *Lexer) Uint8() uint8 {
+	if r.LooseType {
+		return uint8(r.Float64())
+	}
+
 	s := r.number()
 	if !r.Ok() {
 		return 0
@@ -717,6 +721,10 @@ func (r *Lexer) Uint8() uint8 {
 }
 
 func (r *Lexer) Uint16() uint16 {
+	if r.LooseType {
+		return uint16(r.Float64())
+	}
+
 	s := r.number()
 	if !r.Ok() {
 		return 0
@@ -734,6 +742,10 @@ func (r *Lexer) Uint16() uint16 {
 }
 
 func (r *Lexer) Uint32() uint32 {
+	if r.LooseType {
+		return uint32(r.Float64())
+	}
+
 	s := r.number()
 	if !r.Ok() {
 		return 0
@@ -751,6 +763,10 @@ func (r *Lexer) Uint32() uint32 {
 }
 
 func (r *Lexer) Uint64() uint64 {
+	if r.LooseType {
+		return uint64(r.Float64())
+	}
+
 	s := r.number()
 	if !r.Ok() {
 		return 0
@@ -768,10 +784,18 @@ func (r *Lexer) Uint64() uint64 {
 }
 
 func (r *Lexer) Uint() uint {
+	if r.LooseType {
+		return uint(r.Float64())
+	}
+
 	return uint(r.Uint64())
 }
 
 func (r *Lexer) Int8() int8 {
+	if r.LooseType {
+		return int8(r.Float64())
+	}
+
 	s := r.number()
 	if !r.Ok() {
 		return 0
@@ -789,6 +813,10 @@ func (r *Lexer) Int8() int8 {
 }
 
 func (r *Lexer) Int16() int16 {
+	if r.LooseType {
+		return int16(r.Float64())
+	}
+
 	s := r.number()
 	if !r.Ok() {
 		return 0
@@ -806,6 +834,10 @@ func (r *Lexer) Int16() int16 {
 }
 
 func (r *Lexer) Int32() int32 {
+	if r.LooseType {
+		return int32(r.Float64())
+	}
+
 	s := r.number()
 	if !r.Ok() {
 		return 0
@@ -823,6 +855,10 @@ func (r *Lexer) Int32() int32 {
 }
 
 func (r *Lexer) Int64() int64 {
+	if r.LooseType {
+		return int64(r.Float64())
+	}
+
 	s := r.number()
 	if !r.Ok() {
 		return 0
@@ -840,10 +876,18 @@ func (r *Lexer) Int64() int64 {
 }
 
 func (r *Lexer) Int() int {
+	if r.LooseType {
+		return int(r.Float64())
+	}
+
 	return int(r.Int64())
 }
 
 func (r *Lexer) Uint8Str() uint8 {
+	if r.LooseType {
+		return uint8(r.Float64Str())
+	}
+
 	s, b := r.unsafeString()
 	if !r.Ok() {
 		return 0
@@ -861,6 +905,10 @@ func (r *Lexer) Uint8Str() uint8 {
 }
 
 func (r *Lexer) Uint16Str() uint16 {
+	if r.LooseType {
+		return uint16(r.Float64Str())
+	}
+
 	s, b := r.unsafeString()
 	if !r.Ok() {
 		return 0
@@ -878,6 +926,10 @@ func (r *Lexer) Uint16Str() uint16 {
 }
 
 func (r *Lexer) Uint32Str() uint32 {
+	if r.LooseType {
+		return uint32(r.Float64Str())
+	}
+
 	s, b := r.unsafeString()
 	if !r.Ok() {
 		return 0
@@ -895,6 +947,10 @@ func (r *Lexer) Uint32Str() uint32 {
 }
 
 func (r *Lexer) Uint64Str() uint64 {
+	if r.LooseType {
+		return uint64(r.Float64Str())
+	}
+
 	s, b := r.unsafeString()
 	if !r.Ok() {
 		return 0
@@ -912,10 +968,18 @@ func (r *Lexer) Uint64Str() uint64 {
 }
 
 func (r *Lexer) UintStr() uint {
+	if r.LooseType {
+		return uint(r.Float64Str())
+	}
+
 	return uint(r.Uint64Str())
 }
 
 func (r *Lexer) Int8Str() int8 {
+	if r.LooseType {
+		return int8(r.Float64Str())
+	}
+
 	s, b := r.unsafeString()
 	if !r.Ok() {
 		return 0
@@ -933,6 +997,10 @@ func (r *Lexer) Int8Str() int8 {
 }
 
 func (r *Lexer) Int16Str() int16 {
+	if r.LooseType {
+		return int16(r.Float64Str())
+	}
+
 	s, b := r.unsafeString()
 	if !r.Ok() {
 		return 0
@@ -950,6 +1018,10 @@ func (r *Lexer) Int16Str() int16 {
 }
 
 func (r *Lexer) Int32Str() int32 {
+	if r.LooseType {
+		return int32(r.Float64Str())
+	}
+
 	s, b := r.unsafeString()
 	if !r.Ok() {
 		return 0
@@ -967,6 +1039,10 @@ func (r *Lexer) Int32Str() int32 {
 }
 
 func (r *Lexer) Int64Str() int64 {
+	if r.LooseType {
+		return int64(r.Float64Str())
+	}
+
 	s, b := r.unsafeString()
 	if !r.Ok() {
 		return 0
@@ -984,6 +1060,10 @@ func (r *Lexer) Int64Str() int64 {
 }
 
 func (r *Lexer) IntStr() int {
+	if r.LooseType {
+		return int(r.Float64Str())
+	}
+
 	return int(r.Int64Str())
 }
 
@@ -1016,6 +1096,23 @@ func (r *Lexer) Float64() float64 {
 			Offset: r.start,
 			Reason: err.Error(),
 			Data:   s,
+		})
+	}
+	return n
+}
+
+func (r *Lexer) Float64Str() float64 {
+	s, b := r.unsafeString()
+	if !r.Ok() {
+		return 0
+	}
+
+	n, err := strconv.ParseFloat(s, 64)
+	if err != nil {
+		r.addNonfatalError(&LexerError{
+			Offset: r.start,
+			Reason: err.Error(),
+			Data:   string(b),
 		})
 	}
 	return n
