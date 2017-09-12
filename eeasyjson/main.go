@@ -8,12 +8,12 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/thinkeridea/eeasyjson/bootstrap"
+	"github.com/andrewzeneski/eeasyjson/bootstrap"
 	// Reference the gen package to be friendly to vendoring tools,
 	// as it is an indirect dependency.
 	// (The temporary bootstrapping code uses it.)
-	_ "github.com/thinkeridea/eeasyjson/gen"
-	"github.com/thinkeridea/eeasyjson/parser"
+	_ "github.com/andrewzeneski/eeasyjson/gen"
+	"github.com/andrewzeneski/eeasyjson/parser"
 )
 
 var buildTags = flag.String("build_tags", "", "build tags to add to generated file")

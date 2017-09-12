@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"unicode/utf8"
 
-	"github.com/thinkeridea/eeasyjson/buffer"
+	"github.com/andrewzeneski/eeasyjson/buffer"
 )
 
 // Flags describe various encoding options. The behavior may be actually implemented in the encoder, but
