@@ -26,6 +26,19 @@ type Writer struct {
 	Error        error
 	Buffer       buffer.Buffer
 	NoEscapeHTML bool
+
+	// force quoting of numbers and booleans
+	QuoteBool   bool
+	QuoteInt    bool
+	QuoteInt8   bool
+	QuoteInt16  bool
+	QuoteInt32  bool
+	QuoteInt64  bool
+	QuoteUint   bool
+	QuoteUint8  bool
+	QuoteUint16 bool
+	QuoteUint32 bool
+	QuoteUint64 bool
 }
 
 // Size returns the size of the data that was written out.
@@ -112,51 +125,91 @@ func (w *Writer) Base64Bytes(data []byte) {
 }
 
 func (w *Writer) Uint8(n uint8) {
+	if w.QuoteUint8 {
+		w.Uint8Str(n)
+		return
+	}
 	w.Buffer.EnsureSpace(3)
 	w.Buffer.Buf = strconv.AppendUint(w.Buffer.Buf, uint64(n), 10)
 }
 
 func (w *Writer) Uint16(n uint16) {
+	if w.QuoteUint16 {
+		w.Uint16Str(n)
+		return
+	}
 	w.Buffer.EnsureSpace(5)
 	w.Buffer.Buf = strconv.AppendUint(w.Buffer.Buf, uint64(n), 10)
 }
 
 func (w *Writer) Uint32(n uint32) {
+	if w.QuoteUint32 {
+		w.Uint32Str(n)
+		return
+	}
 	w.Buffer.EnsureSpace(10)
 	w.Buffer.Buf = strconv.AppendUint(w.Buffer.Buf, uint64(n), 10)
 }
 
 func (w *Writer) Uint(n uint) {
+	if w.QuoteUint {
+		w.UintStr(n)
+		return
+	}
 	w.Buffer.EnsureSpace(20)
 	w.Buffer.Buf = strconv.AppendUint(w.Buffer.Buf, uint64(n), 10)
 }
 
 func (w *Writer) Uint64(n uint64) {
+	if w.QuoteUint64 {
+		w.Uint64Str(n)
+		return
+	}
 	w.Buffer.EnsureSpace(20)
 	w.Buffer.Buf = strconv.AppendUint(w.Buffer.Buf, n, 10)
 }
 
 func (w *Writer) Int8(n int8) {
+	if w.QuoteInt8 {
+		w.Int8Str(n)
+		return
+	}
 	w.Buffer.EnsureSpace(4)
 	w.Buffer.Buf = strconv.AppendInt(w.Buffer.Buf, int64(n), 10)
 }
 
 func (w *Writer) Int16(n int16) {
+	if w.QuoteInt16 {
+		w.Int16Str(n)
+		return
+	}
 	w.Buffer.EnsureSpace(6)
 	w.Buffer.Buf = strconv.AppendInt(w.Buffer.Buf, int64(n), 10)
 }
 
 func (w *Writer) Int32(n int32) {
+	if w.QuoteInt32 {
+		w.Int32Str(n)
+		return
+	}
 	w.Buffer.EnsureSpace(11)
 	w.Buffer.Buf = strconv.AppendInt(w.Buffer.Buf, int64(n), 10)
 }
 
 func (w *Writer) Int(n int) {
+	if w.QuoteInt {
+		w.IntStr(n)
+		return
+	}
 	w.Buffer.EnsureSpace(21)
 	w.Buffer.Buf = strconv.AppendInt(w.Buffer.Buf, int64(n), 10)
 }
 
 func (w *Writer) Int64(n int64) {
+	if w.QuoteInt64 {
+		w.Int64Str(n)
+		return
+	}
 	w.Buffer.EnsureSpace(21)
 	w.Buffer.Buf = strconv.AppendInt(w.Buffer.Buf, n, 10)
 }
@@ -244,9 +297,17 @@ func (w *Writer) Float64(n float64) {
 func (w *Writer) Bool(v bool) {
 	w.Buffer.EnsureSpace(5)
 	if v {
-		w.Buffer.Buf = append(w.Buffer.Buf, "true"...)
+		if w.QuoteBools {
+			w.Buffer.Buf = append(w.Buffer.Buf, `"true"`...)
+		} else {
+			w.Buffer.Buf = append(w.Buffer.Buf, "true"...)
+		}
 	} else {
-		w.Buffer.Buf = append(w.Buffer.Buf, "false"...)
+		if w.QuoteBools {
+			w.Buffer.Buf = append(w.Buffer.Buf, `"false"`...)
+		} else {
+			w.Buffer.Buf = append(w.Buffer.Buf, "false"...)
+		}
 	}
 }
 
