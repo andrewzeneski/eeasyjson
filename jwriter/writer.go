@@ -297,13 +297,13 @@ func (w *Writer) Float64(n float64) {
 func (w *Writer) Bool(v bool) {
 	w.Buffer.EnsureSpace(5)
 	if v {
-		if w.QuoteBools {
+		if w.QuoteBool {
 			w.Buffer.Buf = append(w.Buffer.Buf, `"true"`...)
 		} else {
 			w.Buffer.Buf = append(w.Buffer.Buf, "true"...)
 		}
 	} else {
-		if w.QuoteBools {
+		if w.QuoteBool {
 			w.Buffer.Buf = append(w.Buffer.Buf, `"false"`...)
 		} else {
 			w.Buffer.Buf = append(w.Buffer.Buf, "false"...)
